@@ -7,6 +7,7 @@ import type Post from "@/models/post";
 export async function getPostById(id: string) {
   // ObjectId 변환, 에러 처리
   let _id: ObjectId;
+  
   try {
     _id = new ObjectId(id);
   } catch {
@@ -15,6 +16,7 @@ export async function getPostById(id: string) {
 
   const post = await postCollection.findOne({ _id });
   if (!post) throw new Error("게시글을 찾을 수 없습니다.");
+
   return post;
 }
 
