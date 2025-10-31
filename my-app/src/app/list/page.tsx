@@ -16,5 +16,18 @@ const List = async () => {
 
   const posts: WithId<Post>[] = await readPostList();
   // posts를 활용해서 JSX 반환
+
+  return (
+    <ul>
+      {posts.map((item, index) => (
+        <li key={index}>
+          <Link href={`/detail/${item._id}`}>
+            <h4>{item.title}</h4>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
+export default List;
